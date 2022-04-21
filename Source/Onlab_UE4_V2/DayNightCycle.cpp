@@ -6,7 +6,7 @@
 // Sets default values
 ADayNightCycle::ADayNightCycle()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
@@ -15,7 +15,7 @@ ADayNightCycle::ADayNightCycle()
 void ADayNightCycle::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
@@ -23,5 +23,14 @@ void ADayNightCycle::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (lightSource)
+	{
+		lightSource->AddActorLocalRotation(FRotator((DeltaTime * cycleSpeed), 0, 0));
+	}
+	if (sun)
+	{
+		FOutputDeviceNull ar;
+		sun->CallFunctionByNameWithArguments(TEXT("UpdateSunDirection"), ar, NULL, true);
+	}
 }
 

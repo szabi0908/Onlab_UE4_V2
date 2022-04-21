@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/DirectionalLight.h"
+#include "Misc/OutputDeviceNull.h"
 #include "GameFramework/Actor.h"
 #include "DayNightCycle.generated.h"
 
@@ -10,17 +12,26 @@ UCLASS()
 class ONLAB_UE4_V2_API ADayNightCycle : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	ADayNightCycle();
 
 protected:
-	// Called when the game starts or when spawned
+	// Called when the game starts or when spawned	
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(EditAnywhere, Category = "Sky")
+		AActor* sun;
+
+	UPROPERTY(EditAnywhere, Category = "Sky")
+		ADirectionalLight* lightSource;
+
+	UPROPERTY(EditAnywhere, Category = "Sky")
+		float cycleSpeed;
 
 };
