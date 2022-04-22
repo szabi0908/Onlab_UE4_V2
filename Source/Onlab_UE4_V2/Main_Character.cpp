@@ -2,6 +2,9 @@
 
 
 #include "Main_Character.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "GameFramework/Actor.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AMain_Character::AMain_Character()
@@ -31,6 +34,7 @@ AMain_Character::AMain_Character()
 	FollowCamera->bUsePawnControlRotation = false;
 
 	bDead = false;
+	Hunger = 100.0f;
 
 }
 
@@ -38,7 +42,14 @@ AMain_Character::AMain_Character()
 void AMain_Character::BeginPlay()
 {
 	Super::BeginPlay();
+
+	GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &AMain_Character::OnBeginOverlap);
 	
+	if (Player_Hunger_Widget_Class != nullptr)
+	{
+		Player_Hunger_Widget = CreateWidget(GetWorld(), Player_Hunger_Widget_Class);
+		Player_Hunger_Widget->AddToViewport();
+	}
 }
 
 // Called every frame
@@ -46,6 +57,20 @@ void AMain_Character::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	Hunger -= DeltaTime * Hunger_Treshold;
+
+	if (Hunger <= 0)
+	{
+		if (!bDead)
+		{
+			bDead = true;
+
+			GetMesh()->SetSimulatePhysics(true);
+			
+			FTimerHandle UnusedHandle;
+			GetWorldTimerManager().SetTimer(UnusedHandle, this, &AMain_Character::RestartGame, 3.0f, false);
+		}
+	}
 }
 
 // Called to bind functionality to input
@@ -87,4 +112,31 @@ void AMain_Character::MoveRight(float Axis)
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 		AddMovementInput(Direction, Axis);
 	}
+}
+
+void AMain_Character::RestartGame()
+{
+	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
+
+}
+
+void AMain_Character::OnBeginOverlap(UPrimitiveComponent* HitComp, AActor* OtherActor,
+	UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+
+	if (OtherActor->ActorHasTag("Recharge"))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Collided with"));
+
+		Hunger += 10.0f;
+
+		if (Hunger > 100.0f)
+		{
+			Hunger = 100;
+		}
+
+		OtherActor->Destroy();
+
+	}
+
 }
