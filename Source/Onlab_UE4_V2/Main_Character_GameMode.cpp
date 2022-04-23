@@ -10,13 +10,15 @@ AMain_Character_GameMode::AMain_Character_GameMode()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
+
 void AMain_Character_GameMode::BeginPlay()
 {
 	Super::BeginPlay();
 
 	FTimerHandle UnusedHandle;
-	//UGameplayStatics::GetAllActorsOfClass();
-	//GetWorldTimerManager().SetTimer(UnusedHandle, this, &AMain_Character_GameMode::SpawnPlayerRecharge, FMath::RandRange(1, 2), true);
+	//GetWorldTimerManager().SetTimer(UnusedHandle, this, &AMain_Character_GameMode::DestroyRandomBush, FMath::RandRange(1, 2), true);
+
+	
 }
 
 void AMain_Character_GameMode::Tick(float DeltaTime)
@@ -34,3 +36,5 @@ void AMain_Character_GameMode::SpawnPlayerRecharge()
 
 	GetWorld()->SpawnActor(PlayerRecharge, &SpawnPosition, &SpawnRotation);
 }
+
+

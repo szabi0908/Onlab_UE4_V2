@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
+#include "Bush.h"
 #include "Main_Character_GameMode.generated.h"
 
 /**
@@ -38,4 +39,7 @@ class ONLAB_UE4_V2_API AMain_Character_GameMode : public AGameMode
 		float Spawn_Y_Max;
 
 	void SpawnPlayerRecharge();
+
+
+
 };
