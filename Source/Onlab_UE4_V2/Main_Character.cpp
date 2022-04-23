@@ -5,6 +5,8 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "GameFramework/Actor.h"
 #include "Kismet/GameplayStatics.h"
+#include "Onlab_UE4_V2/Items/Item.h"
+#include "Onlab_UE4_V2/Items/InventoryComponent.h"
 
 // Sets default values
 AMain_Character::AMain_Character()
@@ -32,6 +34,10 @@ AMain_Character::AMain_Character()
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
+
+	Inventory = CreateDefaultSubobject<UInventoryComponent>("Inventory");
+	Inventory->Capacity = 20;
+
 
 	bDead = false;
 	Hunger = 100.0f;
@@ -118,6 +124,15 @@ void AMain_Character::RestartGame()
 {
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
 
+}
+
+void AMain_Character::UseItem(UItem* Item)
+{
+	if(Item)
+	{
+		Item->Use(this);
+		Item->OnUse(this); //BP event!!!!!
+	}
 }
 
 void AMain_Character::OnBeginOverlap(UPrimitiveComponent* HitComp, AActor* OtherActor,

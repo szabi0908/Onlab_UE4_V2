@@ -14,4 +14,9 @@ class ONLAB_UE4_V2_API UFoodItem : public UItem
 {
 	GENERATED_BODY()
 	
+protected:
+	
+	virtual void Use(class AMain_Character* Character) override;
+
+
 };

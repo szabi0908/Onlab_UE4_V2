@@ -7,11 +7,46 @@
 #include "Item.generated.h"
 
 /**
- * 
+ *
  */
-UCLASS()
+UCLASS(Abstract, BlueprintType, EditInlineNew, DefaultToInstanced)
 class ONLAB_UE4_V2_API UItem : public UObject
 {
 	GENERATED_BODY()
-	
+
+public:
+
+	UItem();
+
+	virtual class UWorld* GetWorld() const { return World; };
+
+	UPROPERTY(Transient)
+		class UWorld* World;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
+		FText UseActionText;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
+		class UStaticMesh* PickupMesh;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
+		class UTexture2D* Thumbnail;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item")
+		FText ItemDisplayName;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item", meta = (Multiline = true))
+		FText ItemDescription;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Item", meta = (ClampMin = 0.0))
+		float Weight;
+
+	UPROPERTY()
+		class UInventoryComponent* OwingInventory;
+
+	virtual void Use(class AMain_Character* Character)PURE_VIRTUAL(UItem, );
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void OnUse(class AMain_Character* Character);
+
 };

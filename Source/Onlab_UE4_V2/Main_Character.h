@@ -29,14 +29,20 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 	UCameraComponent* FollowCamera;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Inventory, meta= (AllowPrivateAcess= "true"))
+		class UInventoryComponent* Inventory;
+
 	void MoveForward(float Axis);
 
 	void MoveRight(float Axis);
 
 	bool bDead;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Health")
 		float Hunger;
+
+	UFUNCTION(BlueprintCallable, Category = "Items")
+		void UseItem(class UItem* Item);
 
 	UPROPERTY(EditAnywhere)
 		float Hunger_Treshold;
