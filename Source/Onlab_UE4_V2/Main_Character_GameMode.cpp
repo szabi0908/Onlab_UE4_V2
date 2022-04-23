@@ -2,6 +2,7 @@
 
 
 #include "Main_Character_GameMode.h"
+#include "Kismet/GameplayStatics.h"
 #include "GameFramework/Actor.h"
 
 AMain_Character_GameMode::AMain_Character_GameMode()
@@ -14,7 +15,8 @@ void AMain_Character_GameMode::BeginPlay()
 	Super::BeginPlay();
 
 	FTimerHandle UnusedHandle;
-	GetWorldTimerManager().SetTimer(UnusedHandle, this, &AMain_Character_GameMode::SpawnPlayerRecharge, FMath::RandRange(1, 2), true);
+	//UGameplayStatics::GetAllActorsOfClass();
+	//GetWorldTimerManager().SetTimer(UnusedHandle, this, &AMain_Character_GameMode::SpawnPlayerRecharge, FMath::RandRange(1, 2), true);
 }
 
 void AMain_Character_GameMode::Tick(float DeltaTime)
