@@ -8,7 +8,7 @@
 #include "GameFramework/Actor.h"
 #include "Bush.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class ONLAB_UE4_V2_API ABush : public APawn
 {
 

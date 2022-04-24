@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, BlueprintType)
 class ONLAB_UE4_V2_API UFoodItem : public UItem
 {
 	GENERATED_BODY()
