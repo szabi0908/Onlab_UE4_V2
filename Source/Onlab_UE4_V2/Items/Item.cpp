@@ -10,3 +10,6 @@ UItem::UItem()
 	UseActionText = FText::FromString("Use");
 }
 
+void UItem::Use(AMain_Character* Character)
+{
+}

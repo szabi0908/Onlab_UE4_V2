@@ -44,7 +44,7 @@ public:
 	UPROPERTY()
 		class UInventoryComponent* OwingInventory;
 
-	virtual void Use(class AMain_Character* Character)PURE_VIRTUAL(UItem, );
+	virtual void Use(class AMain_Character* Character);
 
 	UFUNCTION(BlueprintImplementableEvent)
 		void OnUse(class AMain_Character* Character);
