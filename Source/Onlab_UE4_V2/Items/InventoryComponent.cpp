@@ -16,7 +16,7 @@ void UInventoryComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	for (auto& Item : DefaultsItems)
+	for (auto& Item : DefaultsItemActors)
 	{
 		AddItem(Item);
 	}
@@ -30,7 +30,7 @@ bool UInventoryComponent::AddItem(AItemActor* Item)
 		return false;
 	}
 	Item->OwingInventory = this;
-	Item->World = GetWorld();
+	Item->World = Item->GetWorld();
 	Items.Add(Item);
 
 	OnInventoryUpdated.Broadcast();

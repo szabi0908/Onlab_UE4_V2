@@ -14,6 +14,7 @@
 #include "Blueprint/UserWidget.h"
 #include "Onlab_UE4_V2/Items/ItemActor.h"
 #include "Onlab_UE4_V2/Items/InventoryComponent.h"
+#include "Onlab_UE4_V2/Items/FoodItemActor.h"
 #include "Main_Character.generated.h"
 
 UCLASS()
@@ -43,6 +44,11 @@ public:
 	UPROPERTY(EditAnywhere,  Category="Health")
 		float Hunger;
 
+	UPROPERTY(EditAnywhere, Category = "Food")
+		AItemActor* food1;
+
+	
+
 	UFUNCTION(BlueprintCallable, Category = "Items")
 		void UseItem(class AItemActor* Item);
 
@@ -68,5 +74,7 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	
 
 };

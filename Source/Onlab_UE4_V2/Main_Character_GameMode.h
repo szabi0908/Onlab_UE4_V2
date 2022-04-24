@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
 #include "Bush.h"
+#include "Onlab_UE4_V2/Items/FoodItemActor.h"
 #include "Main_Character_GameMode.generated.h"
 
 /**
@@ -25,7 +26,7 @@ class ONLAB_UE4_V2_API AMain_Character_GameMode : public AGameMode
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere)
-		TSubclassOf<APawn> PlayerRecharge;
+		TSubclassOf<AFoodItemActor> PlayerRecharge;
 
 	float Spawn_Z = 200.0f;
 

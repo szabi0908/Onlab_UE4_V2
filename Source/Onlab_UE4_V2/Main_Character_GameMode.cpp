@@ -41,7 +41,6 @@ void AMain_Character_GameMode::SpawnPlayerRecharge()
 		Bushes[RandInt]->Destroy();
 	}
 	FRotator SpawnRotation = FRotator(0.0f, 0.0f, 0.0f);
-	/*Position = FVector(80, -670, 370);*/
 	GetWorld()->SpawnActor(PlayerRecharge, &Position, &SpawnRotation);
 }
 

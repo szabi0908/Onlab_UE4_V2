@@ -5,7 +5,6 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "GameFramework/Actor.h"
 #include "Kismet/GameplayStatics.h"
-#include "Onlab_UE4_V2/Items/FoodItem.h"
 
 
 // Sets default values
@@ -63,7 +62,7 @@ void AMain_Character::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//Hunger -= DeltaTime * Hunger_Treshold;
+	Hunger -= DeltaTime * Hunger_Treshold;
 
 	if (Hunger <= 0)
 	{
@@ -135,16 +134,15 @@ void AMain_Character::UseItem(AItemActor* Item)
 	}
 }
 
-//UItem food;
 
-void AMain_Character::OnBeginOverlap(UPrimitiveComponent* HitComp, AActor* OtherActor,
+void AMain_Character::OnBeginOverlap(UPrimitiveComponent* HitComp,AActor* OtherActor,
 	UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	
 	if (OtherActor->ActorHasTag("Recharge"))
 	{
 		
-		//Inventory->AddItem(&food);
+		Inventory->AddItem((AFoodItemActor*)OtherActor);
 		Hunger += 10.0f;
 
 		if (Hunger > 100.0f)

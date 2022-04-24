@@ -6,7 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "ItemActor.generated.h"
 
-UCLASS(Blueprintable, BlueprintType)
+UCLASS(Blueprintable, Abstract, BlueprintType, DefaultToInstanced)
 class ONLAB_UE4_V2_API AItemActor : public AActor
 {
 	GENERATED_BODY()

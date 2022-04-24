@@ -12,39 +12,6 @@ ABush::ABush()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
-	
-	//BushMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BUSH"));
-
-	//BushMesh->SetupAttachment(GetRootComponent());
-
-	//static ConstructorHelpers::FObjectFinder<UStaticMesh> Bush(TEXT("'/Game/StarterContent/Props/SM_Bush'"));
-
-	//if (Bush.Succeeded())
-	//{
-	//	
-	//	BushMesh->SetStaticMesh(Bush.Object);
-	//	
-	//	BushMesh->SetRelativeLocation(FVector(70.f, 0.f, 0.f));
-	//}
-
-	//Bush_Plain = CreateDefaultSubobject<UStaticMesh>("Bush_Plain");
-	//static ConstructorHelpers::FObjectFinder<UStaticMesh> BushA(TEXT("'/Game/StarterContent/Props/SM_Bush'"));
-
-	//
-	//if (BushA.Succeeded())
-	//{
-	//	Bush_Plain = BushA.Object;
-	//}
-
-	//Bush_Berries = CreateDefaultSubobject<UStaticMesh>("Bush_Berries");
-	//static ConstructorHelpers::FObjectFinder<UStaticMesh> BushB(TEXT("'/Game/StarterContent/Props/SM_Chair'"));
-
-
-	//if (BushB.Succeeded())
-	//{
-	//	Bush_Berries = BushB.Object;
-	//}
 }
 
 // Called when the game starts or when spawned
