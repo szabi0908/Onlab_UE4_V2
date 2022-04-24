@@ -17,6 +17,9 @@ class ONLAB_UE4_V2_API AMain_Character_GameMode : public AGameMode
 	
 		AMain_Character_GameMode();
 
+
+	
+
 	virtual void BeginPlay() override;
 
 	virtual void Tick(float DeltaTime) override;
@@ -39,7 +42,6 @@ class ONLAB_UE4_V2_API AMain_Character_GameMode : public AGameMode
 		float Spawn_Y_Max;
 
 	void SpawnPlayerRecharge();
-
 
 
 };

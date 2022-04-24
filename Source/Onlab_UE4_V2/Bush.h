@@ -5,17 +5,27 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Kismet/GameplayStatics.h"
+#include "GameFramework/Actor.h"
 #include "Bush.generated.h"
 
 UCLASS()
 class ONLAB_UE4_V2_API ABush : public APawn
 {
+
 	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<APawn> BushBerries;
+
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<APawn> PlayerRecharge;
 
 public:
 	// Sets default values for this pawn's properties
 	ABush();
 	TArray<AActor*> Bushes;
+
+
 	
 
 protected:
@@ -30,5 +40,22 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	void DestroyRandomBush();
+
+	void SpawnPlayerRecharge();
+
+	/*UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Bush")
+		class UStaticMeshComponent* BushMesh;
+
+
+	UFUNCTION()
+		void ChangeBushMesh();
+
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bush")
+		class UStaticMesh* Bush_Plain;
+
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Bush")
+		class UStaticMesh* Bush_Berries;*/
 
 };
