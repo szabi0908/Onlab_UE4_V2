@@ -20,11 +20,11 @@ public:
 
 	virtual void BeginPlay() override;
 
-	bool AddItem(class UItem* Item);
-	bool RemoveItem(class UItem* Item);
+	bool AddItem(class AItemActor* Item);
+	bool RemoveItem(class AItemActor* Item);
 
 	UPROPERTY(EditDefaultsOnly, Instanced)
-		TArray<class UItem*> DefaultsItems;
+		TArray<class AItemActor*> DefaultsItems;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Inventory")
 		int32 Capacity;
@@ -33,7 +33,7 @@ public:
 		FOnInventoryUpdated OnInventoryUpdated;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Items")
-		TArray<class UItem*> Items;
+		TArray<class AItemActor*> Items;
 
 		
 };

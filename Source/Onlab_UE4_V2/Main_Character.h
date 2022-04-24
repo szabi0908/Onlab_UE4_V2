@@ -12,7 +12,7 @@
 #include "GameFramework/Controller.h"
 #include "Gameframework/SpringArmComponent.h"
 #include "Blueprint/UserWidget.h"
-#include "Onlab_UE4_V2/Items/Item.h"
+#include "Onlab_UE4_V2/Items/ItemActor.h"
 #include "Onlab_UE4_V2/Items/InventoryComponent.h"
 #include "Main_Character.generated.h"
 
@@ -40,11 +40,11 @@ public:
 
 	bool bDead;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Health")
+	UPROPERTY(EditAnywhere,  Category="Health")
 		float Hunger;
 
 	UFUNCTION(BlueprintCallable, Category = "Items")
-		void UseItem(class UItem* Item);
+		void UseItem(class AItemActor* Item);
 
 	UPROPERTY(EditAnywhere)
 		float Hunger_Treshold;
