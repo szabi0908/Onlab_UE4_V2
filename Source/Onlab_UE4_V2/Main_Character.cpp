@@ -126,7 +126,7 @@ void AMain_Character::RestartGame()
 
 }
 
-void AMain_Character::UseItem(UItem* Item)
+void AMain_Character::UseItem(AItemActor* Item)
 {
 	if(Item)
 	{

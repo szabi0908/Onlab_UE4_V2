@@ -2,7 +2,7 @@
 
 
 #include "InventoryComponent.h"
-#include "Item.h"
+#include "ItemActor.h"
 
 // Sets default values for this component's properties
 UInventoryComponent::UInventoryComponent()
@@ -23,7 +23,7 @@ void UInventoryComponent::BeginPlay()
 	
 }
 
-bool UInventoryComponent::AddItem(UItem* Item)
+bool UInventoryComponent::AddItem(AItemActor* Item)
 {
 	if (Items.Num() >= Capacity || !Item)
 	{
@@ -38,7 +38,7 @@ bool UInventoryComponent::AddItem(UItem* Item)
 	return true;
 }
 
-bool UInventoryComponent::RemoveItem(UItem* Item)
+bool UInventoryComponent::RemoveItem(AItemActor* Item)
 {
 
 	if (Item)
