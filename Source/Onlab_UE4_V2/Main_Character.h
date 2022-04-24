@@ -12,6 +12,8 @@
 #include "GameFramework/Controller.h"
 #include "Gameframework/SpringArmComponent.h"
 #include "Blueprint/UserWidget.h"
+#include "Onlab_UE4_V2/Items/Item.h"
+#include "Onlab_UE4_V2/Items/InventoryComponent.h"
 #include "Main_Character.generated.h"
 
 UCLASS()
@@ -53,7 +55,7 @@ public:
 	
 	UPROPERTY(EditAnywhere, Category = "UI HUD")
 		TSubclassOf<UUserWidget> Player_Hunger_Widget_Class;
-	UUserWidget* Player_Hunger_Widget;
+		UUserWidget* Player_Hunger_Widget;
 
 	void RestartGame();
 protected:

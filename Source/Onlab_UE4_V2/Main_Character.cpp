@@ -5,8 +5,8 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "GameFramework/Actor.h"
 #include "Kismet/GameplayStatics.h"
-#include "Onlab_UE4_V2/Items/Item.h"
-#include "Onlab_UE4_V2/Items/InventoryComponent.h"
+#include "Onlab_UE4_V2/Items/FoodItem.h"
+
 
 // Sets default values
 AMain_Character::AMain_Character()
@@ -135,14 +135,16 @@ void AMain_Character::UseItem(UItem* Item)
 	}
 }
 
+//UItem food;
+
 void AMain_Character::OnBeginOverlap(UPrimitiveComponent* HitComp, AActor* OtherActor,
 	UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-
+	
 	if (OtherActor->ActorHasTag("Recharge"))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Collided with"));
-
+		
+		//Inventory->AddItem(&food);
 		Hunger += 10.0f;
 
 		if (Hunger > 100.0f)

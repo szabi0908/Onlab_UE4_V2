@@ -28,13 +28,6 @@ void AMain_Character_GameMode::Tick(float DeltaTime)
 
 void AMain_Character_GameMode::SpawnPlayerRecharge()
 {
-	//float RandX = FMath::RandRange(Spawn_X_Min, Spawn_X_Max);
-	//float Randy = FMath::RandRange(Spawn_Y_Min, Spawn_Y_Max);
-
-	//FVector SpawnPosition = FVector(80, -670, 300);;
-	//FRotator SpawnRotation = FRotator(0.0f, 0.0f, 0.0f);
-	//GetWorld()->SpawnActor(PlayerRecharge, &SpawnPosition, &SpawnRotation);
-
 	FVector Position;
 	TArray<AActor*> Bushes;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ABush::StaticClass(), Bushes);
