@@ -41,7 +41,7 @@ public:
 
 	bool bDead;
 
-	UPROPERTY(EditAnywhere,  Category="Health")
+	UPROPERTY(BlueprintReadOnly,  Category="Health")
 		float Hunger;
 
 	UPROPERTY(EditAnywhere, Category = "Food")
