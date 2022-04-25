@@ -125,7 +125,7 @@ void AMain_Character::RestartGame()
 
 }
 
-void AMain_Character::UseItem(AItemActor* Item)
+void AMain_Character::UseItem(UItem* Item)
 {
 	if(Item)
 	{
@@ -142,7 +142,7 @@ void AMain_Character::OnBeginOverlap(UPrimitiveComponent* HitComp,AActor* OtherA
 	if (OtherActor->ActorHasTag("Recharge"))
 	{
 		
-		Inventory->AddItem((AFoodItemActor*)OtherActor);
+		//Inventory->AddItem(OtherActor);
 		Hunger += 10.0f;
 
 		if (Hunger > 100.0f)
