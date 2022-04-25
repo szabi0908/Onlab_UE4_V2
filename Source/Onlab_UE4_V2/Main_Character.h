@@ -12,9 +12,9 @@
 #include "GameFramework/Controller.h"
 #include "Gameframework/SpringArmComponent.h"
 #include "Blueprint/UserWidget.h"
-#include "Onlab_UE4_V2/Items/ItemActor.h"
+#include "Onlab_UE4_V2/Items/Item.h"
 #include "Onlab_UE4_V2/Items/InventoryComponent.h"
-#include "Onlab_UE4_V2/Items/FoodItemActor.h"
+#include "Onlab_UE4_V2/Items/FoodItem.h"
 #include "Main_Character.generated.h"
 
 UCLASS()
@@ -45,12 +45,12 @@ public:
 		float Hunger;
 
 	UPROPERTY(EditAnywhere, Category = "Food")
-		AItemActor* food1;
+		UFoodItem* food1;
 
 	
 
 	UFUNCTION(BlueprintCallable, Category = "Items")
-		void UseItem(class AItemActor* Item);
+		void UseItem(class UItem* Item);
 
 	UPROPERTY(EditAnywhere)
 		float Hunger_Treshold;

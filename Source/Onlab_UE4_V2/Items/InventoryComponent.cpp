@@ -2,7 +2,7 @@
 
 
 #include "InventoryComponent.h"
-#include "ItemActor.h"
+#include "Item.h"
 
 // Sets default values for this component's properties
 UInventoryComponent::UInventoryComponent()
@@ -16,21 +16,21 @@ void UInventoryComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	for (auto& Item : DefaultsItemActors)
+	for (auto& Item : DefaultsItem)
 	{
 		AddItem(Item);
 	}
 	
 }
 
-bool UInventoryComponent::AddItem(AItemActor* Item)
+bool UInventoryComponent::AddItem(UItem* Item)
 {
 	if (Items.Num() >= Capacity || !Item)
 	{
 		return false;
 	}
 	Item->OwingInventory = this;
-	Item->World = Item->GetWorld();
+	Item->World =GetWorld();
 	Items.Add(Item);
 
 	OnInventoryUpdated.Broadcast();
@@ -38,7 +38,7 @@ bool UInventoryComponent::AddItem(AItemActor* Item)
 	return true;
 }
 
-bool UInventoryComponent::RemoveItem(AItemActor* Item)
+bool UInventoryComponent::RemoveItem(UItem* Item)
 {
 
 	if (Item)
