@@ -41,6 +41,10 @@ AMain_Character::AMain_Character()
 	bDead = false;
 	Hunger = 100.0f;
 
+	Stamina = 100.0f;
+	Stamina_Treshold = 2;
+
+	SprintSpeedMultiplier = 1.5;
 }
 
 // Called when the game starts or when spawned
@@ -55,6 +59,16 @@ void AMain_Character::BeginPlay()
 		Player_Hunger_Widget = CreateWidget(GetWorld(), Player_Hunger_Widget_Class);
 		Player_Hunger_Widget->AddToViewport();
 	}
+}
+
+void AMain_Character::Sprinting()
+{
+		GetCharacterMovement()->MaxWalkSpeed = 1800;
+}
+
+void AMain_Character::SprintingEnd()
+{
+	GetCharacterMovement()->MaxWalkSpeed = 600;
 }
 
 // Called every frame
@@ -76,6 +90,19 @@ void AMain_Character::Tick(float DeltaTime)
 			GetWorldTimerManager().SetTimer(UnusedHandle, this, &AMain_Character::RestartGame, 3.0f, false);
 		}
 	}
+
+	if (GetCharacterMovement()->MaxWalkSpeed>600 && GetCharacterMovement()->Velocity.Size()!=0 )
+	{
+		Stamina -= DeltaTime * Stamina_Treshold;
+		if (Stamina <= 15)
+		{
+			GetCharacterMovement()->MaxWalkSpeed = 600;
+		}
+	}
+	else if(Stamina<100 && Hunger>39)
+	{
+		Stamina += DeltaTime * Stamina_Treshold*2;
+	}
 }
 
 // Called to bind functionality to input
@@ -91,6 +118,9 @@ void AMain_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AMain_Character::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AMain_Character::MoveRight);
+
+	PlayerInputComponent->BindAction("Sprinting", IE_Pressed, this, &AMain_Character::Sprinting);
+	PlayerInputComponent->BindAction("Sprinting", IE_Released, this, &AMain_Character::SprintingEnd);
 }
 
 

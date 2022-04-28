@@ -9,7 +9,7 @@
 /**
  *
  */
-UCLASS(Blueprintable,Abstract, BlueprintType, EditInlineNew, DefaultToInstanced)
+UCLASS(Blueprintable, Abstract, BlueprintType, EditInlineNew, DefaultToInstanced)
 class ONLAB_UE4_V2_API UItem : public UObject
 {
 	GENERATED_BODY()
