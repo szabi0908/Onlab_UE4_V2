@@ -41,19 +41,27 @@ public:
 
 	bool bDead;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Character Movement: Walking")
+		float SprintSpeedMultiplier;
+
 	UPROPERTY(BlueprintReadOnly,  Category="Health")
 		float Hunger;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Health")
+		float Stamina;
 
 	UPROPERTY(EditAnywhere, Category = "Food")
 		UFoodItem* food1;
 
-	
 
 	UFUNCTION(BlueprintCallable, Category = "Items")
 		void UseItem(class UItem* Item);
 
 	UPROPERTY(EditAnywhere)
 		float Hunger_Treshold;
+
+	UPROPERTY(EditAnywhere)
+		float Stamina_Treshold;
 
 	UFUNCTION()
 		void OnBeginOverlap(class UPrimitiveComponent* HitComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComponent,
@@ -67,6 +75,10 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	void Sprinting();
+
+	void SprintingEnd();
 
 public:	
 	// Called every frame

@@ -23,7 +23,7 @@ public:
 	bool AddItem(class UItem* Item);
 	bool RemoveItem(class UItem* Item);
 
-	UPROPERTY(EditAnywhere, Instanced, Category = "Inventory")
+	UPROPERTY(EditDefaultsOnly, Instanced)
 		TArray<class UItem*> DefaultsItem;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Inventory")
