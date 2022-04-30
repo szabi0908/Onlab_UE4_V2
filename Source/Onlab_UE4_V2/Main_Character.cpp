@@ -180,7 +180,7 @@ void AMain_Character::OnBeginOverlap(UPrimitiveComponent* HitComp,AActor* OtherA
 			Hunger = 100;
 		}
 
-		OtherActor->Destroy();
+		//OtherActor->Destroy();
 
 	}
 

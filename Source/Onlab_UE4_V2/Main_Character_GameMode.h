@@ -26,7 +26,13 @@ class ONLAB_UE4_V2_API AMain_Character_GameMode : public AGameMode
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere)
-		TSubclassOf<AFoodItemActor> PlayerRecharge;
+		TSubclassOf<AActor> PlayerRecharge;
+
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<AActor> PlayerRechargePrevoius;
+
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<AActor> Berry;
 
 	float Spawn_Z = 200.0f;
 
