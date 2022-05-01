@@ -52,7 +52,7 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Food")
 		UFoodItem* food1;
-
+B
 
 	UFUNCTION(BlueprintCallable, Category = "Items")
 		void UseItem(class UItem* Item);
