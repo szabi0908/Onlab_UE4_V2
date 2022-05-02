@@ -71,6 +71,9 @@ public:
 		TSubclassOf<UUserWidget> Player_Hunger_Widget_Class;
 		UUserWidget* Player_Hunger_Widget;
 
+	UFUNCTION(BlueprintCallable, Category = "Health")
+		void IncreaseHunger();
+
 	void RestartGame();
 protected:
 	// Called when the game starts or when spawned

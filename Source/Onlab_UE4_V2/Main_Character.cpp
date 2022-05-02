@@ -149,6 +149,24 @@ void AMain_Character::MoveRight(float Axis)
 	}
 }
 
+void AMain_Character::IncreaseHunger()
+{
+	if (Hunger < 100)
+	{	
+		if (Hunger > 80)
+		{
+			Hunger = 100;
+		}
+		else
+		{
+			Hunger += 20;
+		}
+		
+	}
+	
+	
+}
+
 void AMain_Character::RestartGame()
 {
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
