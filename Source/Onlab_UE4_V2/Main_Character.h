@@ -83,6 +83,10 @@ protected:
 
 	void SprintingEnd();
 
+	void Climbing();
+
+	void ClimbingEnd();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

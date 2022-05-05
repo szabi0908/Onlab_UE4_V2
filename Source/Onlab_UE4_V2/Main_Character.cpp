@@ -71,6 +71,14 @@ void AMain_Character::SprintingEnd()
 	GetCharacterMovement()->MaxWalkSpeed = 600;
 }
 
+void AMain_Character::Climbing()
+{
+}
+
+void AMain_Character::ClimbingEnd()
+{
+}
+
 // Called every frame
 void AMain_Character::Tick(float DeltaTime)
 {
@@ -121,6 +129,9 @@ void AMain_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 
 	PlayerInputComponent->BindAction("Sprinting", IE_Pressed, this, &AMain_Character::Sprinting);
 	PlayerInputComponent->BindAction("Sprinting", IE_Released, this, &AMain_Character::SprintingEnd);
+
+	PlayerInputComponent->BindAction("Climbing", IE_Pressed, this, &AMain_Character::Sprinting);
+	PlayerInputComponent->BindAction("Climbing", IE_Released, this, &AMain_Character::SprintingEnd);
 }
 
 
