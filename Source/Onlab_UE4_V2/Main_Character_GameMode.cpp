@@ -39,10 +39,11 @@ void AMain_Character_GameMode::SpawnPlayerRecharge()
 		Position = Bushes[RandInt]->GetActorLocation();
 		Position.Z;
 		Bushes[RandInt]->Destroy();
+
+		FRotator SpawnRotation = FRotator(0.0f, 0.0f, 0.0f);
+		GetWorld()->SpawnActor(PlayerRecharge, &Position, &SpawnRotation);
+		GetWorld()->SpawnActor(Berry, &Position, &SpawnRotation);
 	}
-	FRotator SpawnRotation = FRotator(0.0f, 0.0f, 0.0f);
-	GetWorld()->SpawnActor(PlayerRecharge, &Position, &SpawnRotation);
-	GetWorld()->SpawnActor(Berry, &Position, &SpawnRotation);
 }
 
 

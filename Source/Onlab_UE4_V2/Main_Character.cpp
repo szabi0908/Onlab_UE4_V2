@@ -191,7 +191,7 @@ void AMain_Character::OnBeginOverlap(UPrimitiveComponent* HitComp,AActor* OtherA
 	{
 		
 		//Inventory->AddItem(OtherActor);
-		Hunger += 10.0f;
+		//Hunger += 10.0f;
 
 		if (Hunger > 100.0f)
 		{
