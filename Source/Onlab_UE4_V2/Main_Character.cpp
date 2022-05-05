@@ -39,6 +39,8 @@ AMain_Character::AMain_Character()
 
 
 	bDead = false;
+	bIsClimbing = false;
+
 	Hunger = 100.0f;
 
 	Stamina = 100.0f;
@@ -73,6 +75,10 @@ void AMain_Character::SprintingEnd()
 
 void AMain_Character::Climbing()
 {
+	if (bIsClimbing)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Climbing"));
+	}
 }
 
 void AMain_Character::ClimbingEnd()
@@ -198,19 +204,9 @@ void AMain_Character::OnBeginOverlap(UPrimitiveComponent* HitComp,AActor* OtherA
 	UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	
-	if (OtherActor->ActorHasTag("Recharge"))
+	if (OtherActor->ActorHasTag("Climbing"))
 	{
-		
-		//Inventory->AddItem(OtherActor);
-		//Hunger += 10.0f;
-
-		if (Hunger > 100.0f)
-		{
-			Hunger = 100;
-		}
-
-		//OtherActor->Destroy();
-
+		bIsClimbing = true;
 	}
 
 }

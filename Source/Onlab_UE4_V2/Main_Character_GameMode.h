@@ -34,6 +34,9 @@ class ONLAB_UE4_V2_API AMain_Character_GameMode : public AGameMode
 	UPROPERTY(EditAnywhere)
 		TSubclassOf<AActor> Berry;
 
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<AActor> Ladder;
+
 	float Spawn_Z = 200.0f;
 
 	UPROPERTY(EditAnywhere)

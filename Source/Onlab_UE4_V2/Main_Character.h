@@ -41,6 +41,8 @@ public:
 
 	bool bDead;
 
+	bool bIsClimbing;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Character Movement: Walking")
 		float SprintSpeedMultiplier;
 
