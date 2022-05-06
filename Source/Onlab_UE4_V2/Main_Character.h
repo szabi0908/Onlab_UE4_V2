@@ -41,6 +41,8 @@ public:
 
 	bool bDead;
 
+	bool bIsAbleToClimb;
+
 	bool bIsClimbing;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Character Movement: Walking")

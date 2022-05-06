@@ -39,7 +39,8 @@ AMain_Character::AMain_Character()
 
 
 	bDead = false;
-	bIsClimbing = false;
+	bIsAbleToClimb = false;
+	bIsClimbing = false;;
 
 	Hunger = 100.0f;
 
@@ -75,14 +76,20 @@ void AMain_Character::SprintingEnd()
 
 void AMain_Character::Climbing()
 {
-	if (bIsClimbing)
+
+	if (!bDead)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Climbing"));
+		if (bIsAbleToClimb)
+		{
+			bIsClimbing = true;
+		}
 	}
+
 }
 
 void AMain_Character::ClimbingEnd()
 {
+	bIsClimbing = false;
 }
 
 // Called every frame
@@ -117,6 +124,14 @@ void AMain_Character::Tick(float DeltaTime)
 	{
 		Stamina += DeltaTime * Stamina_Treshold*2;
 	}
+
+	if (bIsClimbing)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("MIVAAA"));
+		FVector CharacterLocation = GetActorLocation();
+		CharacterLocation.Z +=5;
+		SetActorLocation(CharacterLocation);
+	}
 }
 
 // Called to bind functionality to input
@@ -136,8 +151,8 @@ void AMain_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	PlayerInputComponent->BindAction("Sprinting", IE_Pressed, this, &AMain_Character::Sprinting);
 	PlayerInputComponent->BindAction("Sprinting", IE_Released, this, &AMain_Character::SprintingEnd);
 
-	PlayerInputComponent->BindAction("Climbing", IE_Pressed, this, &AMain_Character::Sprinting);
-	PlayerInputComponent->BindAction("Climbing", IE_Released, this, &AMain_Character::SprintingEnd);
+	PlayerInputComponent->BindAction("Climbing", IE_Pressed, this, &AMain_Character::Climbing);
+	PlayerInputComponent->BindAction("Climbing", IE_Released, this, &AMain_Character::ClimbingEnd);
 }
 
 
@@ -203,7 +218,7 @@ void AMain_Character::OnBeginOverlap(UPrimitiveComponent* HitComp,AActor* OtherA
 	
 	if (OtherActor->ActorHasTag("Climbing"))
 	{
-		bIsClimbing = true;
+		bIsAbleToClimb = true;
 	}
 
 }
