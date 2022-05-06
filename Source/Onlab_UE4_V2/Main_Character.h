@@ -74,7 +74,7 @@ public:
 		UUserWidget* Player_Hunger_Widget;
 
 	UFUNCTION(BlueprintCallable, Category = "Health")
-		void IncreaseHunger();
+		void IncreaseHunger(int inc);
 
 	void RestartGame();
 protected:

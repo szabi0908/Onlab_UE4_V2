@@ -166,7 +166,7 @@ void AMain_Character::MoveRight(float Axis)
 	}
 }
 
-void AMain_Character::IncreaseHunger()
+void AMain_Character::IncreaseHunger(int inc)
 {
 	if (Hunger < 100)
 	{	
@@ -176,12 +176,9 @@ void AMain_Character::IncreaseHunger()
 		}
 		else
 		{
-			Hunger += 20;
+			Hunger += inc;
 		}
-		
 	}
-	
-	
 }
 
 void AMain_Character::RestartGame()
