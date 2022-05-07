@@ -4,6 +4,7 @@
 #include "Main_Character.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "GameFramework/Actor.h"
+#include "Math/Vector.h"
 #include "Kismet/GameplayStatics.h"
 
 
@@ -74,14 +75,16 @@ void AMain_Character::SprintingEnd()
 	GetCharacterMovement()->MaxWalkSpeed = 600;
 }
 
-void AMain_Character::Climbing()
+void AMain_Character::Climbing(float Axis)
 {
-
+	
 	if (!bDead)
 	{
 		if (bIsAbleToClimb)
 		{
-			bIsClimbing = true;
+
+			static const FVector Dir = GetActorUpVector();
+			AddMovementInput(Dir, Axis);
 		}
 	}
 
@@ -125,13 +128,6 @@ void AMain_Character::Tick(float DeltaTime)
 		Stamina += DeltaTime * Stamina_Treshold*2;
 	}
 
-	if (bIsClimbing)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("MIVAAA"));
-		FVector CharacterLocation = GetActorLocation();
-		CharacterLocation.Z +=5;
-		SetActorLocation(CharacterLocation);
-	}
 }
 
 // Called to bind functionality to input
@@ -151,8 +147,8 @@ void AMain_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	PlayerInputComponent->BindAction("Sprinting", IE_Pressed, this, &AMain_Character::Sprinting);
 	PlayerInputComponent->BindAction("Sprinting", IE_Released, this, &AMain_Character::SprintingEnd);
 
-	PlayerInputComponent->BindAction("Climbing", IE_Pressed, this, &AMain_Character::Climbing);
-	PlayerInputComponent->BindAction("Climbing", IE_Released, this, &AMain_Character::ClimbingEnd);
+	PlayerInputComponent->BindAxis("Climbing",this, &AMain_Character::Climbing);
+	//PlayerInputComponent->BindAxis("Climbing",this, &AMain_Character::ClimbingEnd);
 }
 
 
@@ -161,6 +157,7 @@ void AMain_Character::MoveForward(float Axis)
 {
 	if (!bDead)
 	{
+		
 		const FRotator Rotation = Controller->GetControlRotation();
 		const FRotator YawRotation(0, Rotation.Yaw, 0);
 
