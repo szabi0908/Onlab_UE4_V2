@@ -87,7 +87,7 @@ protected:
 
 	void SprintingEnd();
 
-	void Climbing(float Axis);
+	void Climbing();
 
 	void ClimbingEnd();
 

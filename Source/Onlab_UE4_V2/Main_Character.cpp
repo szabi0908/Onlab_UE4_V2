@@ -75,16 +75,16 @@ void AMain_Character::SprintingEnd()
 	GetCharacterMovement()->MaxWalkSpeed = 600;
 }
 
-void AMain_Character::Climbing(float Axis)
+void AMain_Character::Climbing()
 {
 	
 	if (!bDead)
 	{
 		if (bIsAbleToClimb)
 		{
-
+			UE_LOG(LogTemp, Warning, TEXT("Climbing"));
 			static const FVector Dir = GetActorUpVector();
-			AddMovementInput(Dir, Axis);
+			AddMovementInput(Dir);
 		}
 	}
 
@@ -147,7 +147,7 @@ void AMain_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	PlayerInputComponent->BindAction("Sprinting", IE_Pressed, this, &AMain_Character::Sprinting);
 	PlayerInputComponent->BindAction("Sprinting", IE_Released, this, &AMain_Character::SprintingEnd);
 
-	PlayerInputComponent->BindAxis("Climbing",this, &AMain_Character::Climbing);
+	//PlayerInputComponent->BindAction("Climb", IE_Pressed, this, &AMain_Character::Climbing);
 	//PlayerInputComponent->BindAxis("Climbing",this, &AMain_Character::ClimbingEnd);
 }
 
@@ -216,6 +216,7 @@ void AMain_Character::OnBeginOverlap(UPrimitiveComponent* HitComp,AActor* OtherA
 	if (OtherActor->ActorHasTag("Climbing"))
 	{
 		bIsAbleToClimb = true;
+		
 	}
 
 }
