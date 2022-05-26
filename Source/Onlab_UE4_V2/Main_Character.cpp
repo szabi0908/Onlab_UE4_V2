@@ -32,8 +32,10 @@ AMain_Character::AMain_Character()
 	CameraBoom->bUsePawnControlRotation = true;
 
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
-	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
-	FollowCamera->bUsePawnControlRotation = false;
+	FollowCamera->SetupAttachment(GetCapsuleComponent());
+	FollowCamera->AddRelativeLocation(FVector(-39.65f, 1.75f, 64.0f));
+	FollowCamera->bUsePawnControlRotation = true;
+
 
 	Inventory = CreateDefaultSubobject<UInventoryComponent>("Inventory");
 	Inventory->Capacity = 20;

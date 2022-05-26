@@ -30,7 +30,7 @@ public:
 	USpringArmComponent* CameraBoom;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
-	UCameraComponent* FollowCamera;
+	class UCameraComponent* FollowCamera;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Inventory, meta= (AllowPrivateAcess= "true"))
 		class UInventoryComponent* Inventory;
